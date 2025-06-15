@@ -140,16 +140,22 @@
 
     </script>
     <script>
-        const btn = document.getElementById('invertBtn');
+        const btn = document.getElementById('hubInvertBtn');
+
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('inverted');
+            btn.textContent = '☀️';  
+        }
 
         btn.addEventListener('click', () => {
             document.body.classList.toggle('inverted');
 
-            // Icon wechseln
             if (document.body.classList.contains('inverted')) {
-                btn.textContent = '☀️';
+                localStorage.setItem('darkMode', 'true');
+                btn.textContent = '☀️';  
             } else {
-                btn.textContent = '🌙';
+                localStorage.setItem('darkMode', 'false');
+                btn.textContent = '🌙';  
             }
 
             btn.classList.remove('animate');
@@ -161,6 +167,7 @@
                 btn.disabled = false;
             }, 250);
         });
+
     </script>
 </body>
 </html>
