@@ -80,11 +80,17 @@
 
         let mouseX = 0, mouseY = 0;
         let currentX = 0, currentY = 0;
-        const speed = 0.1; 
+        const speed = 0.1;
 
         window.addEventListener('mousemove', e => {
             mouseX = e.clientX;
             mouseY = e.clientY;
+        });
+
+        window.addEventListener('touchmove', e => {
+            const touch = e.touches[0]; 
+            mouseX = touch.clientX;
+            mouseY = touch.clientY;
         });
 
         function animate() {
@@ -109,6 +115,7 @@
                 cursor.classList.remove('cursor--hover');
             });
         });
+
 
 
 
