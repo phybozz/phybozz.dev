@@ -356,7 +356,7 @@ body.inverted {
 
 .statusText {
     position: fixed;
-    top: 15%;
+    top: 125px;
     white-space: nowrap;
 }
 
