@@ -292,3 +292,11 @@ body.inverted {
     z-index: 2; 
     font-size: clamp(15px, 3.75vw, 17.5px);
 }
+
+@media (max-width: 700px) {
+    #happy {
+        top: 20%;   /* Etwas höher auf dem Bildschirm */
+        left: 50%;  /* Immer noch zentriert */
+        font-size: clamp(50px, 15vw, 80px); /* Anpassung der Schriftgröße */
+    }
+}
