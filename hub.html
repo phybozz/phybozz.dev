@@ -87,6 +87,7 @@
             mouseY = e.clientY;
         });
 
+
         window.addEventListener('touchmove', e => {
             const touch = e.touches[0]; 
             mouseX = touch.clientX;
@@ -97,24 +98,14 @@
             currentX += (mouseX - currentX) * speed;
             currentY += (mouseY - currentY) * speed;
 
-            cursor.style.top = currentY + 'px';
             cursor.style.left = currentX + 'px';
+            cursor.style.top = currentY + 'px';
 
             requestAnimationFrame(animate);
         }
 
         animate();
 
-        const hoverTargets = document.querySelectorAll('a, button, .mode-toggle');
-
-        hoverTargets.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursor.classList.add('cursor--hover');
-            });
-            el.addEventListener('mouseleave', () => {
-                cursor.classList.remove('cursor--hover');
-            });
-        });
 
 
 
