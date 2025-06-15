@@ -26,11 +26,12 @@ body {
 #welcome, #placeholder {
     display: flex;
     white-space: nowrap;
-    position: relative;
-    top: 500px;
-    z-index: 2; 
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10; 
     font-size: clamp(15px, 3.75vw, 17.5px);
-    transform: translateX(10px);
 }
 
 @keyframes ratio {
@@ -40,14 +41,17 @@ body {
 }
 
 #happy, #sad {
-    position: relative;
-    right: 20px;
+    position: fixed;
+    display: flex;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-size: clamp(80px, 50vw, 200px);
-    z-index: 2;
+    z-index: 10;
     text-shadow: 0px 0px 500px rgba(255, 255, 255, 0.277);
-    transform: translateX(10px);
-    margin: 220px;
     white-space: nowrap;
+    align-items: center;
+    justify-content: center;
 }
 #okBtn {
     bottom: 30px;
@@ -186,11 +190,21 @@ body {
     100% { opacity: 1;}
 }
 
-#loader.animate {
-    animation:
-        l1 1s infinite cubic-bezier(.33, .72, .66, .39),
-        fadein 0.5s cubic-bezier(.33, .72, .66, .39) forwards;
+@keyframes fadeout {
+    0% { opacity: 1; }
+    100% { opacity:0; }
 }
+
+#loader.animate-start {
+    animation: 
+        l1 1s cubic-bezier(.33, .72, .66, .39),
+        fadein 500ms cubic-bezier(.33, .72, .66, .39) forwards;
+}
+#loader.animate-end {
+    animation: fadeout 0.5s cubic-bezier(.33, .72, .66, .39) forwards;
+}
+
+
 
 body {
     cursor: none;
@@ -218,8 +232,7 @@ body {
 }
 
 #happy .inner, #sad .inner {
-  display: inline-block;
-  animation: ratio 2s ease-in-out infinite;
+    animation: ratio 2s ease-in-out infinite;
 }
 
 .inverted {

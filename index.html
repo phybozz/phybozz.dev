@@ -60,20 +60,32 @@
         });
     </script>
     <script>
-        const layers = document.querySelectorAll('.parallax-layer3, .parallax-layer4');
+                const layers = document.querySelectorAll('.parallax-layer3, .parallax-layer4');
+                const happy = document.getElementById('happy');
+                const welcome = document.getElementById('welcome');
 
-        window.addEventListener('mousemove', e => {
-            const x = (e.clientX / window.innerWidth - 0.5);
-            const y = (e.clientY / window.innerHeight - 0.5);
+                const mouseSpeedFactor = 0.1;  
 
-            layers.forEach(layer => {
-                const speed = parseFloat(layer.getAttribute('data-speed'));
-                const moveX = x * speed * 5;
-                const moveY = y * speed * 5;
+                window.addEventListener('mousemove', e => {
 
-                layer.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
-            });
-        });
+                    const x = (e.clientX / window.innerWidth - 0.5);
+                    const y = (e.clientY / window.innerHeight - 0.5);
+
+                    layers.forEach(layer => {
+                        const speed = parseFloat(layer.getAttribute('data-speed'));
+                        const moveX = x * speed * 5;
+                        const moveY = y * speed * 5;
+                        layer.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
+                    });
+
+                    const moveX = x * mouseSpeedFactor * 100; 
+                    const moveY = y * mouseSpeedFactor * 100;
+
+
+                    sad.style.transform = `translate(-50%, -50%) translate(${moveX}px, ${moveY}px)`;
+                    placeholder.style.transform = `translate(-50%, -50%) translate(${moveX}px, ${moveY}px)`;
+                });
+
     </script>
     <script>
         const btn = document.getElementById('invertBtn');
