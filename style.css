@@ -133,7 +133,8 @@ body {
     right: 20px;
     background-color: rgb(28, 28, 28);
     color: white;
-    padding: 10px 10px;
+    width: 45px;
+    height: 45px;
     font-size: 18px;
     border-radius: 10px;
     text-decoration: none;
@@ -143,13 +144,18 @@ body {
     transition: background-color 0.3s;
     border-style: none;
     transition: all 0.25s cubic-bezier(0.02, 0.01, 0.21, 1);
+    justify-content: center;
+    align-items: center;
 }
 
-.socialbuttons:hover, .mode-toggle:hover, .okBtn:hover, #invertBtn:hover{
+.socialbuttons:hover, .mode-toggle:hover, .okBtn:hover, #invertBtn:hover, #error:hover, .status:hover, .spotifybtn:hover{
     scale: 1.1
 }
 
-.socialbuttons.animate, .mode-toggle.animate, .okBtn.animate, #invertBtn.animate {
+.spotifybtn:hover {
+    scale: 1.4
+}
+.socialbuttons.animate, .mode-toggle.animate, .okBtn.animate, #invertBtn.animate, #error.animate .status.animate {
     animation: clickindabutton 0.25s ease-in-out;
 }
 
@@ -197,7 +203,7 @@ body {
 
 #loader.animate-start {
     animation: 
-        l1 1s cubic-bezier(.33, .72, .66, .39),
+        l1 1s infinite cubic-bezier(.33, .72, .66, .39),
         fadein 500ms cubic-bezier(.33, .72, .66, .39) forwards;
 }
 #loader.animate-end {
@@ -234,6 +240,7 @@ body {
 #happy .inner, #sad .inner {
     animation: ratio 2s ease-in-out infinite;
 }
+
 
 .inverted {
     filter: invert(1) hue-rotate(180deg);
@@ -291,4 +298,117 @@ body.inverted {
     white-space: nowrap;
     z-index: 2; 
     font-size: clamp(15px, 3.75vw, 17.5px);
+}
+
+#error {
+    text-align: center;
+    display: flex;
+    position: fixed;
+    top: 20px;
+    right: 100px;
+    background-color: rgb(28, 28, 28);
+    color: white;
+    padding: 10px 20px;
+    font-size: 15px;
+    border-radius: 10px;
+    text-decoration: none;
+    outline: 2px solid rgb(59, 59, 59);
+    cursor: none;
+    user-select: none;
+    transition: background-color 0.3s;
+    border-style: none;
+    transition: all 0.25s cubic-bezier(0.02, 0.01, 0.21, 1);
+    opacity: 1;
+}
+
+.error.clicked {
+    animation: clickindabutton 0.3s ease-out;
+}
+
+.status {
+    text-align: center;
+    display: flex;
+    position: fixed;
+    top: 20px;
+    right: 80px;
+    background-color: rgb(28, 28, 28);
+    color: white;
+    width: 180px;
+    height: 45px;
+    font-size: 15px;
+    border-radius: 10px;
+    text-decoration: none;
+    outline: 2px solid rgb(59, 59, 59);
+    cursor: none;
+    user-select: none;
+    transition: background-color 0.3s;
+    border-style: none;
+    transition: all 0.25s cubic-bezier(0.02, 0.01, 0.21, 1);
+    opacity: 1;
+    align-items: center;
+    justify-content: center;
+}
+.spotifybtn {
+    background-color: #ffffff00;
+    border-style: none;
+    color: #ffffff;
+}
+
+.statusText {
+    position: fixed;
+    top: 15%;
+    white-space: nowrap;
+}
+
+.statusTextspot {
+    position: fixed;
+    top: 20%;
+    white-space: nowrap;
+}
+
+@keyframes spotifyfadein {
+    0% {
+	    opacity: 0;
+	    filter: blur(24px);
+	    transform: translate3d(0, 42%, 0);
+    }
+    10% {
+        opacity: 1;
+        filter: blur(0px);
+        transform: translate3d(0, 0, 0);
+    }
+    90% {
+        opacity: 1;
+        filter: blur(0px);
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        opacity: 0;
+        filter: blur(24px);
+        transform: translate3d(0, 42%, 0);
+    }
+    110% {
+        opacity: 0;
+        filter: blur(24px);
+        transform: translate3d(0, 42%, 0);
+    }
+}
+
+.spotifyanim {
+    opacity: 0;
+    animation: spotifyfadein 5s .5s forwards;
+}
+
+.status.first {
+    animation: fadein 500ms cubic-bezier(.33, .72, .66, .39) forwards;
+}
+
+.status.second {
+    animation: fadeout 500ms cubic-bezier(.33, .72, .66, .39) forwards;
+}
+
+#whatishedoing {
+    display: flex;
+    position: fixed;
+    top: 100px;
 }
