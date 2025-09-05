@@ -220,8 +220,8 @@
                                
                 ))
             }
-        document.addEventListener('DOMContentLoaded', () => {
-            const statusText = document.querySelector('#status');
+        /*document.addEventListener('DOMContentLoaded', () => {
+            const statusText = document.getElementById('#status');
             const statusButton = document.getElementById('#status-button');
             let toggle = true;
 
@@ -236,5 +236,4 @@
 
                 toggle = !toggle;
             });
-        });
-
+       */ });
