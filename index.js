@@ -220,6 +220,7 @@
                                
                 ))
             }
+        };
         /*document.addEventListener('DOMContentLoaded', () => {
             const statusText = document.getElementById('#status');
             const statusButton = document.getElementById('#status-button');
@@ -237,4 +238,5 @@
                 toggle = !toggle;
             });
         }); */
+
 
