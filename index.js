@@ -12,7 +12,7 @@
                 const url = button.getAttribute('href');
 
                 if (!url || url.trim() === '') {
-                    console.error('Ungültige URL!');
+                    console.error('error');
                     return;
                 }
 
@@ -221,14 +221,11 @@
                 ))
             }
         document.addEventListener('DOMContentLoaded', () => {
-            console.log('JavaScript ist geladen!');  // Testausgabe
-
             const statusText = document.querySelector('#status');
-            const statusButton = document.querySelector('#status-button');
+            const statusButton = document.getElementById('#status-button');
             let toggle = true;
 
             statusButton.addEventListener('click', () => {
-                console.log('Button clicked!');
                 statusText.classList.remove('status.first', 'status.second');
 
                 if (toggle) {
@@ -240,3 +237,4 @@
                 toggle = !toggle;
             });
         });
+
