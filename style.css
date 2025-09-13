@@ -388,11 +388,6 @@ body.inverted {
         filter: blur(24px);
         transform: translate3d(0, 42%, 0);
     }
-    110% {
-        opacity: 0;
-        filter: blur(24px);
-        transform: translate3d(0, 42%, 0);
-    }
 }
 
 .spotifyanim {
@@ -412,4 +407,5 @@ body.inverted {
     display: flex;
     position: fixed;
     top: 100px;
+
 }
