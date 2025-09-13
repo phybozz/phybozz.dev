@@ -205,21 +205,21 @@
                                
                 }))
         function currentlyPlaying() {
-            fetch("https://api.lanyard.rest/v1/users/923151955654738011").then((a) => a.json().then((a) => {
-                    landyard = a.data
-                   
-                    spotify = landyard['spotify']
-                    music = "</i><i>"+landyard.spotify['song']+" — "+landyard.spotify['artist'].replaceAll(";", ",")
-                    document.getElementsByClassName("statusTextspot")[0].classList.add("spotifyanim")
-                    document.getElementsByClassName("statusTextspot")[0].innerHTML = music
-                    setTimeout(function() {
-                        document.getElementsByClassName("statusTextspot")[0].classList.remove("spotifyanim")
-                        document.getElementsByClassName("statusTextspot")[0].innerHTML = ""
-                    }, 5500)
-                    }
-                               
-                ))
-            }
+            fetch("https://api.lanyard.rest/v1/users/923151955654738011").then((a) =>
+                a.json().then((a) => {
+                    landyard = a.data;
+        
+                    spotify = landyard['spotify'];
+                    music = "</i><i>" + landyard.spotify['song'] + " — " + landyard.spotify['artist'].replaceAll(";", ",");
+                    document.getElementsByClassName("statusTextspot")[0].classList.add("spotifyanim");
+                    document.getElementsByClassName("statusTextspot")[0].innerHTML = music;
+        
+                    setTimeout(function () {
+                        document.getElementsByClassName("statusTextspot")[0].classList.remove("spotifyanim");
+                        document.getElementsByClassName("statusTextspot")[0].innerHTML = "";
+                    }, 5500);
+                })
+            );
         }
         /*document.addEventListener('DOMContentLoaded', () => {
             const statusText = document.getElementById('#status');
@@ -238,6 +238,7 @@
                 toggle = !toggle;
             });
         }); */
+
 
 
 
