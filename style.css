@@ -149,14 +149,19 @@ body {
     align-items: center;
 }
 
-.socialbuttons:hover, .mode-toggle:hover, .okBtn:hover, #invertBtn:hover, #error:hover, .status:hover, .spotifybtn:hover{
+.socialbuttons:hover, .mode-toggle:hover, .okBtn:hover, #invertBtn:hover, #error:hover, .status:hover{
     scale: 1.1
+}
+
+.socialbuttons:active, .mode-toggle:active, #error:active, .status:active{
+    scale: 1.025
 }
 
 .spotifybtn:hover {
     scale: 1.4
 }
-.socialbuttons.animate, .mode-toggle.animate, .okBtn.animate, #invertBtn.animate, #error.animate .status.animate {
+
+.mode-toggle.animate, #invertBtn.animate, #error.animate .status.animate {
     animation: clickindabutton 0.25s ease-in-out;
 }
 
@@ -207,11 +212,6 @@ body {
         l1 1s infinite cubic-bezier(.33, .72, .66, .39),
         fadein 500ms cubic-bezier(.33, .72, .66, .39) forwards;
 }
-#loader.animate-end {
-    animation: fadeout 0.5s cubic-bezier(.33, .72, .66, .39) forwards;
-}
-
-
 
 body {
     cursor: none;
@@ -306,7 +306,7 @@ body.inverted {
     display: flex;
     position: fixed;
     top: 20px;
-    right: 100px;
+
     background-color: rgb(28, 28, 28);
     color: white;
     padding: 10px 20px;
@@ -319,7 +319,7 @@ body.inverted {
     transition: background-color 0.3s;
     border-style: none;
     transition: all 0.25s cubic-bezier(0.02, 0.01, 0.21, 1);
-    opacity: 1;
+    opacity: 0;
 }
 
 .error.clicked {
@@ -353,6 +353,11 @@ body.inverted {
     background-color: #ffffff00;
     border-style: none;
     color: #ffffff;
+    transition: all 0.25s cubic-bezier(0.02, 0.01, 0.21, 1);
+}
+
+.spotifybtn:active {
+    scale: 1.1;
 }
 
 .statusText {
