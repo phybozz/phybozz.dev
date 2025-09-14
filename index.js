@@ -36,10 +36,7 @@ sbuttons.forEach(button => {
                 box.classList.remove('animate-start');
                 box.classList.add('animate-end');
             }
-
-            window.onfocus = null;
-
-            currentUrl = null;
+            location.reload()
         };
     });
 });
