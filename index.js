@@ -48,16 +48,6 @@ function hideShow(url) {
     void box.offsetWidth;
 
     box.classList.add('animate-start');
-
-    setTimeout(() => {
-        box.classList.remove('animate-start');
-        void box.offsetWidth;
-        box.classList.add('animate-end');
-
-        if (window.opener) {
-            window.location.href = url;
-        }
-    }, 10000);
 }
 
 const cursor = document.getElementById('cursor');
@@ -143,21 +133,20 @@ window.addEventListener('touchmove', e => {
     welcome.style.transform = `translate(-50%, -50%) translate(${moveX}px, ${moveY}px)`;
 });
 
-const btn = document.getElementById('hubInvertBtn');
-
-if (localStorage.getItem('darkMode') === 'true') {
+if (localStorage.getItem('hubtheme') === 'dark') {
     document.body.classList.add('inverted');
-    btn.textContent = '☀️';  
+    document.getElementById("hubInvertBtn").textContent = '☀️';  
 }
 
-btn.addEventListener('click', () => {
+document.getElementById("hubInvertBtn").addEventListener('click', () => {
     document.body.classList.toggle('inverted');
+    btn = document.getElementById("hubInvertBtn")
 
     if (document.body.classList.contains('inverted')) {
-        localStorage.setItem('darkMode', 'true');
+        localStorage.setItem('hubtheme', 'dark');
         btn.textContent = '☀️';  
     } else {
-        localStorage.setItem('darkMode', 'false');
+        localStorage.setItem('hubtheme', 'white');
         btn.textContent = '🌙';
     }
 
@@ -192,7 +181,6 @@ window.ondataload = () => { }
             spotify = landyard['spotify']
             if (landyard['listening_to_spotify'] == true || landyard['listening_to_spotify'] == "true") {
                 document.getElementsByClassName("statusText")[0].innerHTML = "<button class='spotifybtn' onclick='currentlyPlaying()'><i class='fab fa-spotify'></i></button> " + status
-                //music = "listening to </i>    <i class='fab fa-github'></i> <i>"+landyard.spotify['song']+" — "+landyard.spotify['artist'].replaceAll(";", ",")
             }
                         
         }))
@@ -213,20 +201,3 @@ function currentlyPlaying() {
         })
     );
 }
-/*document.addEventListener('DOMContentLoaded', () => {
-    const statusText = document.getElementById('#status');
-    const statusButton = document.getElementById('#status-button');
-    let toggle = true;
-
-    statusButton.addEventListener('click', () => {
-        statusText.classList.remove('status.first', 'status.second');
-
-        if (toggle) {
-            statusText.classList.add('status.first');
-        } else {
-            statusText.classList.add('status.second');
-        }
-
-        toggle = !toggle;
-    });
-}); */

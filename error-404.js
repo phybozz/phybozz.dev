@@ -118,22 +118,21 @@ window.addEventListener('touchmove', e => {
     placeholder.style.transform = `translate(-50%, -50%) translate(${moveX}px, ${moveY}px)`;
 });
 
-const btn = document.getElementById('invertBtn');
-
-if (localStorage.getItem('darkMode') === 'true') {
+if (localStorage.getItem('hubtheme') === 'dark') {
     document.body.classList.add('inverted');
-    btn.textContent = '☀️';  
+    document.getElementById("hubInvertBtn").textContent = '☀️';  
 }
 
-btn.addEventListener('click', () => {
+document.getElementById("hubInvertBtn").addEventListener('click', () => {
     document.body.classList.toggle('inverted');
+    btn = document.getElementById("hubInvertBtn")
 
     if (document.body.classList.contains('inverted')) {
-        localStorage.setItem('darkMode', 'true');
+        localStorage.setItem('hubtheme', 'dark');
         btn.textContent = '☀️';  
     } else {
-        localStorage.setItem('darkMode', 'false');
-        btn.textContent = '🌙';  
+        localStorage.setItem('hubtheme', 'white');
+        btn.textContent = '🌙';
     }
 
     btn.classList.remove('animate');
