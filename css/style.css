@@ -149,20 +149,16 @@ body {
     align-items: center;
 }
 
-.socialbuttons:hover, .mode-toggle:hover, .okBtn:hover, #invertBtn:hover, #error:hover, .status:hover{
+.socialbuttons:hover, .mode-toggle:hover, .okBtn:hover, #hubinvertBtn:hover, #error:hover, .status:hover{
     scale: 1.1
 }
 
 .socialbuttons:active, .mode-toggle:active, #error:active, .status:active{
-    scale: 1.025
+    scale: 0.95
 }
 
 .spotifybtn:hover {
     scale: 1.4
-}
-
-.mode-toggle.animate, #invertBtn.animate, #error.animate .status.animate {
-    animation: clickindabutton 0.25s ease-in-out;
 }
 
 .socialbuttonscontainer {

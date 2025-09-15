@@ -1,11 +1,109 @@
-const sbuttons = document.querySelectorAll('.socialbuttons');
+//variables
 
-let tabOpened = false;
-let currentUrl = null;
+const sbuttons = document.querySelectorAll('.socialbuttons');
+const layers = document.querySelectorAll('.parallax-layer1, .parallax-layer2');
+const happy = document.getElementById('happy');
+const welcome = document.getElementById('welcome');
+
+//custom cursor
+
+let mouseX = -10, mouseY = -10;
+let currentX = 0, currentY = 0;
+const speed = 0.1;
+const cursor = document.getElementById('cursor');
+const hoverTargets = document.querySelectorAll('a, button, .mode-toggle');
+const mouseSpeedFactor = 0.1;  
+function animate() {
+    currentX += (mouseX - currentX) * speed;
+    currentY += (mouseY - currentY) * speed;
+
+    cursor.style.top = currentY + 'px';
+    cursor.style.left = currentX + 'px';
+
+    requestAnimationFrame(animate);
+} animate(); window.addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+}); window.addEventListener('touchmove', e => {
+    const touch = e.touches[0];
+    mouseX = touch.clientX;
+    mouseY = touch.clientY;
+}); hoverTargets.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+        cursor.classList.add('cursor--hover');
+    });
+    el.addEventListener('mouseleave', () => {
+        cursor.classList.remove('cursor--hover');
+    });
+}); window.addEventListener('mousemove', e => {
+    const x = (e.clientX / window.innerWidth - 0.5);
+    const y = (e.clientY / window.innerHeight - 0.5);
+
+    layers.forEach(layer => {
+        const speed = parseFloat(layer.getAttribute('data-speed'));
+        const moveX = x * speed * 5;
+        const moveY = y * speed * 5;
+        layer.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
+    });
+
+    const moveX = x * mouseSpeedFactor * 100;
+    const moveY = y * mouseSpeedFactor * 100;
+
+    happy.style.transform = `translate(-50%, -50%) translate(${moveX}px, ${moveY}px)`;
+    welcome.style.transform = `translate(-50%, -50%) translate(${moveX}px, ${moveY}px)`;
+}); window.addEventListener('touchmove', e => {
+    const touch = e.touches[0];
+    const x = (touch.clientX / window.innerWidth - 0.5);
+    const y = (touch.clientY / window.innerHeight - 0.5);
+
+    layers.forEach(layer => {
+        const speed = parseFloat(layer.getAttribute('data-speed'));
+        const moveX = x * speed * 5;
+        const moveY = y * speed * 5;
+        layer.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
+    });
+
+    const moveX = x * mouseSpeedFactor * 100;
+    const moveY = y * mouseSpeedFactor * 100;
+
+    happy.style.transform = `translate(-50%, -50%) translate(${moveX}px, ${moveY}px)`;
+    welcome.style.transform = `translate(-50%, -50%) translate(${moveX}px, ${moveY}px)`;
+});
+
+//theme loader and switch
+
+if (localStorage.getItem('hubtheme') === 'dark') {
+    document.body.classList.add('inverted');
+    document.getElementById("hubInvertBtn").textContent = '☀️';  
+} document.getElementById("hubInvertBtn").addEventListener('click', () => {
+    document.body.classList.toggle('inverted');
+    btn = document.getElementById("hubInvertBtn")
+
+    if (document.body.classList.contains('inverted')) {
+        localStorage.setItem('hubtheme', 'dark');
+        btn.textContent = '☀️';  
+    } else {
+        localStorage.setItem('hubtheme', 'white');
+        btn.textContent = '🌙';
+    }
+
+    btn.classList.remove('animate');
+    void btn.offsetWidth;
+    btn.classList.add('animate');
+
+    btn.disabled = true;
+    setTimeout(() => {
+        btn.disabled = false;
+    }, 250);
+});
+
+//loading animation and tab opening (idk if this even works lol)
 
 sbuttons.forEach(button => {
     button.addEventListener('click', function(e) {
         e.preventDefault();
+        let tabOpened = false;
+        let currentUrl = null;
 
         if (tabOpened) return;
 
@@ -15,9 +113,7 @@ sbuttons.forEach(button => {
             console.error('error');
             return;
         }
-
         currentUrl = url;
-
         const box = document.getElementById('loader');
         if (box) {
             box.classList.remove('animate-start', 'animate-end');
@@ -39,126 +135,15 @@ sbuttons.forEach(button => {
             location.reload()
         };
     });
-});
-
-function hideShow(url) {
+}); function hideShow(url) {
     const box = document.getElementById('loader');
 
     box.classList.remove('animate-start', 'animate-end');
     void box.offsetWidth;
-
     box.classList.add('animate-start');
 }
 
-const cursor = document.getElementById('cursor');
-
-let mouseX = 0, mouseY = 0;
-let currentX = 0, currentY = 0;
-const speed = 0.1;
-
-window.addEventListener('mousemove', e => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-});
-
-window.addEventListener('touchmove', e => {
-    const touch = e.touches[0];
-    mouseX = touch.clientX;
-    mouseY = touch.clientY;
-});
-
-function animate() {
-    currentX += (mouseX - currentX) * speed;
-    currentY += (mouseY - currentY) * speed;
-
-    cursor.style.top = currentY + 'px';
-    cursor.style.left = currentX + 'px';
-
-    requestAnimationFrame(animate);
-}
-
-animate();
-
-const hoverTargets = document.querySelectorAll('a, button, .mode-toggle');
-
-hoverTargets.forEach(el => {
-    el.addEventListener('mouseenter', () => {
-        cursor.classList.add('cursor--hover');
-    });
-    el.addEventListener('mouseleave', () => {
-        cursor.classList.remove('cursor--hover');
-    });
-});
-
-const layers = document.querySelectorAll('.parallax-layer1, .parallax-layer2');
-const happy = document.getElementById('happy');
-const welcome = document.getElementById('welcome');
-
-const mouseSpeedFactor = 0.1;  
-
-window.addEventListener('mousemove', e => {
-    const x = (e.clientX / window.innerWidth - 0.5);
-    const y = (e.clientY / window.innerHeight - 0.5);
-
-    layers.forEach(layer => {
-        const speed = parseFloat(layer.getAttribute('data-speed'));
-        const moveX = x * speed * 5;
-        const moveY = y * speed * 5;
-        layer.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
-    });
-
-    const moveX = x * mouseSpeedFactor * 100;
-    const moveY = y * mouseSpeedFactor * 100;
-
-    happy.style.transform = `translate(-50%, -50%) translate(${moveX}px, ${moveY}px)`;
-    welcome.style.transform = `translate(-50%, -50%) translate(${moveX}px, ${moveY}px)`;
-});
-
-window.addEventListener('touchmove', e => {
-    const touch = e.touches[0];
-    const x = (touch.clientX / window.innerWidth - 0.5);
-    const y = (touch.clientY / window.innerHeight - 0.5);
-
-    layers.forEach(layer => {
-        const speed = parseFloat(layer.getAttribute('data-speed'));
-        const moveX = x * speed * 5;
-        const moveY = y * speed * 5;
-        layer.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
-    });
-
-    const moveX = x * mouseSpeedFactor * 100;
-    const moveY = y * mouseSpeedFactor * 100;
-
-    happy.style.transform = `translate(-50%, -50%) translate(${moveX}px, ${moveY}px)`;
-    welcome.style.transform = `translate(-50%, -50%) translate(${moveX}px, ${moveY}px)`;
-});
-
-if (localStorage.getItem('hubtheme') === 'dark') {
-    document.body.classList.add('inverted');
-    document.getElementById("hubInvertBtn").textContent = '☀️';  
-}
-
-document.getElementById("hubInvertBtn").addEventListener('click', () => {
-    document.body.classList.toggle('inverted');
-    btn = document.getElementById("hubInvertBtn")
-
-    if (document.body.classList.contains('inverted')) {
-        localStorage.setItem('hubtheme', 'dark');
-        btn.textContent = '☀️';  
-    } else {
-        localStorage.setItem('hubtheme', 'white');
-        btn.textContent = '🌙';
-    }
-
-    btn.classList.remove('animate');
-    void btn.offsetWidth;
-    btn.classList.add('animate');
-
-    btn.disabled = true;
-    setTimeout(() => {
-        btn.disabled = false;
-    }, 250);
-});
+//fetching
 
 window.ondataload = () => { }
         fetch("https://api.lanyard.rest/v1/users/923151955654738011").then((a) => a.json().then((a) => {
