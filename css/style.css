@@ -1,265 +1,40 @@
+/*@ related stuff*/
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
-html, body, * {
-    cursor: none !important;
-    user-select: none !important;
-}
-
-a:hover, a:focus, button:hover, button:focus {
-    cursor: none !important;
-}
-html, body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    cursor: none !important;
-    overflow: hidden; 
-}
-body {
-    background-color: black;
-    font-family: DM Sans, sans-serif;
-    color: aliceblue;
-    display: flex;
-    flex-direction:column ;
-    align-items: center;
-}
-#welcome, #placeholder {
-    display: flex;
-    white-space: nowrap;
-    position: fixed;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10; 
-    font-size: clamp(15px, 3.75vw, 17.5px);
-    text-align: center;
-}
-
 @keyframes ratio {
     0% {transform: rotate(2deg)}
     50% {transform:rotate(-2deg)}
     100% {transform: rotate(2deg);}
-}
-
-#happy, #sad {
-    position: fixed;
-    display: flex;
-    top: 25%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: clamp(150px, 42.5vw, 200px);
-    z-index: 10;
-    text-shadow: 0px 0px 500px rgba(255, 255, 255, 0.277);
-    white-space: nowrap;
-    align-items: center;
-    justify-content: center;
-}
-.okBtn {
-    bottom: 30px;
-    position:fixed;
-    display: inline-block;
-    background-color: rgb(28, 28, 28);
-    color: white;
-    padding: 5px 70px;
-    font-size: 18px;
-    border-radius: 10px;
-    text-decoration: none;
-    outline: 2px solid rgb(59, 59, 59);
-    cursor: none;
-    user-select: none;
-    transition: background-color 0.3s;
-    border-style: none;
-    transition: all 0.25s cubic-bezier(0.02, 0.01, 0.21, 1);
-}
-
-#invertBtn {
-    display: flex;
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background-color: rgb(28, 28, 28);
-    color: white;
-    padding: 10px 10px;
-    font-size: 18px;
-    border-radius: 10px;
-    text-decoration: none;
-    outline: 2px solid rgb(59, 59, 59);
-    cursor: none;
-    user-select: none;
-    transition: background-color 0.3s;
-    border-style: none;
-    transition: all 0.25s cubic-bezier(0.02, 0.01, 0.21, 1);
-}
-
-@keyframes clickindabutton {
-    0% {transform: scale(1); background-color: rgb(28, 28, 28);}
-    50% {transform: scale(0.90); background-color: rgb(42, 42, 42);}
-    100% {transform: scale(1); background-color: rgb(28, 28, 28);}
-}
-
-
-/*.socialbuttons {
-    background-color: rgb(28, 28, 28);
-    border-style: none;
-    width: 100px;
-    height: 100px;
-    font-family: DM Sans, sans-serif;
-    color: aliceblue;
-    border-radius: 20px;
-    outline: 2px solid rgb(59, 59, 59);
-    margin-right: 7px;
-    margin-top: 100px;
-} this code is for the old legacy buttons  */
-
-.socialbuttons {
-    display: inline;
-    background-color: rgb(28, 28, 28);
-    color: white;
-    padding: 10px 20px;
-    font-size: 18px;
-    border-radius: 10px;
-    text-decoration: none;
-    outline: 2px solid rgb(59, 59, 59);
-    cursor: none;
-    user-select: none;
-    transition: background-color 0.3s;
-    border-style: none;
-    transition: all 0.25s cubic-bezier(0.02, 0.01, 0.21, 1);
-}
-
-.mode-toggle {
-    display: flex;
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background-color: rgb(28, 28, 28);
-    color: white;
-    width: 45px;
-    height: 45px;
-    font-size: 18px;
-    border-radius: 10px;
-    text-decoration: none;
-    outline: 2px solid rgb(59, 59, 59);
-    cursor: none;
-    user-select: none;
-    transition: background-color 0.3s;
-    border-style: none;
-    transition: all 0.25s cubic-bezier(0.02, 0.01, 0.21, 1);
-    justify-content: center;
-    align-items: center;
-}
-
-.socialbuttons:hover, .mode-toggle:hover, .okBtn:hover, #hubinvertBtn:hover, #error:hover, .status:hover{
-    scale: 1.1
-}
-
-.socialbuttons:active, .mode-toggle:active, #error:active, .status:active{
-    scale: 0.95
-}
-
-.spotifybtn:hover {
-    scale: 1.4
-}
-
-.socialbuttonscontainer {
-    cursor: none !important;
-    position: fixed;
-    bottom: 10px;
-    transform: translateY(-50%);
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    justify-content: center;
-    flex-shrink: 0;
-    white-space: nowrap;
-    gap: 15px
-}
-
-#loader {
-    display: flex;
-    position: fixed;
-    width: 50px;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    border: 8px solid;
-    border-color: #ffffff #ffffff00;
-    bottom: 20px;
-    right: 20px;
-    opacity: 0;
-}
-@keyframes l1 {
+} @keyframes l1 {
     0% {transform: rotate(0deg);}
     100% {transform: rotate(360deg);}
-
-}
-
-@keyframes fadein {
+} @keyframes fadein {
     0% { opacity: 0;}
     100% { opacity: 1;}
-}
-
-@keyframes fadeout {
+} @keyframes fadeout {
     0% { opacity: 1; }
     100% { opacity:0; }
-}
-
-#loader.animate-start {
-    animation: 
-        l1 1s infinite cubic-bezier(.33, .72, .66, .39),
-        fadein 500ms cubic-bezier(.33, .72, .66, .39) forwards;
-}
-
-body {
-    cursor: none;
-}
-
-#cursor {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: white;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: transform 0.15s ease, width 0.15s ease, height 0.15s ease;
-    mix-blend-mode: difference;
-    box-shadow: #ffffff7c 0px 0px 5pc;
-}
-
-
-.parallax-layer1, .parallax-layer2, .parallax-layer3, .parallax-layer4 {
-    transition: transform 0.2s ease-out;
-}
-
-#happy .inner, #sad .inner {
-    animation: ratio 2s ease-in-out infinite;
-}
-
-
-.inverted {
-    filter: invert(1) hue-rotate(180deg);
-}
-
-body.inverted {
-  filter: invert(1) hue-rotate(180deg);
-  background-color: white !important; 
-}
-
-
-#cursor.cursor--hover {
-    transform: translate(-50%, -50%) scale(1.25);
-}
-
-
-.socialbuttons .label {
-    display: inline;
-}
-
-
-@media (max-width: 700px) {
+} @keyframes spotifyfadein {
+    0% {
+	    opacity: 0;
+	    filter: blur(24px);
+	    transform: translate3d(0, 42%, 0);
+    }
+    10% {
+        opacity: 1;
+        filter: blur(0px);
+        transform: translate3d(0, 0, 0);
+    }
+    90% {
+        opacity: 1;
+        filter: blur(0px);
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        opacity: 0;
+        filter: blur(24px);
+        transform: translate3d(0, 42%, 0);
+    }
+} @media (max-width: 700px) {
     .socialbuttonscontainer {
         flex-wrap: nowrap;
         justify-content: center;
@@ -281,14 +56,59 @@ body.inverted {
     .socialbuttons .label {
         display: none; 
     }
-}
-@media (max-width: 850px) {
+} @media (max-width: 850px) {
     #loader {
         top: 20px;
         left: 20px;
     }
 }
-#social {
+
+/*idk what to call this but ok*/
+html, body, * {
+    cursor: none !important;
+    user-select: none !important;
+} html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; 
+} body {
+    background-color: black;
+    font-family: DM Sans, sans-serif;
+    color: aliceblue;
+    display: flex;
+    flex-direction:column ;
+    align-items: center;
+} body.inverted {
+  filter: invert(1) hue-rotate(180deg);
+  background-color: white !important; 
+}
+
+/*sum thingys in the middle*/
+#welcome, #placeholder {
+    display: flex;
+    white-space: nowrap;
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10; 
+    font-size: clamp(15px, 3.75vw, 17.5px);
+    text-align: center;
+} #happy, #sad {
+    position: fixed;
+    display: flex;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(150px, 42.5vw, 200px);
+    z-index: 10;
+    text-shadow: 0px 0px 500px rgba(255, 255, 255, 0.277);
+    white-space: nowrap;
+    align-items: center;
+    justify-content: center;
+} #returntxt {
     bottom: 60px;
     position: fixed;
     display: flex;
@@ -297,16 +117,46 @@ body.inverted {
     font-size: clamp(15px, 3.75vw, 17.5px);
 }
 
-#error {
-    text-align: center;
+/*Buttons*/
+.okBtn {
+    bottom: 30px;
+    position:fixed;
+    display: inline-block;
+    background-color: rgb(28, 28, 28);
+    color: white;
+    padding: 5px 70px;
+    font-size: 18px;
+    border-radius: 10px;
+    text-decoration: none;
+    outline: 2px solid rgb(59, 59, 59);
+    cursor: none;
+    user-select: none;
+    transition: background-color 0.3s;
+    border-style: none;
+    transition: all 0.25s cubic-bezier(0.02, 0.01, 0.21, 1);
+} #invertBtn {
     display: flex;
     position: fixed;
     top: 20px;
-
+    right: 20px;
+    background-color: rgb(28, 28, 28);
+    color: white;
+    padding: 10px 10px;
+    font-size: 18px;
+    border-radius: 10px;
+    text-decoration: none;
+    outline: 2px solid rgb(59, 59, 59);
+    cursor: none;
+    user-select: none;
+    transition: background-color 0.3s;
+    border-style: none;
+    transition: all 0.25s cubic-bezier(0.02, 0.01, 0.21, 1);
+} .socialbuttons {
+    display: inline;
     background-color: rgb(28, 28, 28);
     color: white;
     padding: 10px 20px;
-    font-size: 15px;
+    font-size: 18px;
     border-radius: 10px;
     text-decoration: none;
     outline: 2px solid rgb(59, 59, 59);
@@ -315,24 +165,16 @@ body.inverted {
     transition: background-color 0.3s;
     border-style: none;
     transition: all 0.25s cubic-bezier(0.02, 0.01, 0.21, 1);
-    opacity: 0;
-}
-
-.error.clicked {
-    animation: clickindabutton 0.3s ease-out;
-}
-
-.status {
-    text-align: center;
+} .mode-toggle {
     display: flex;
     position: fixed;
     top: 20px;
-    right: 80px;
+    right: 20px;
     background-color: rgb(28, 28, 28);
     color: white;
-    width: 180px;
+    width: 45px;
     height: 45px;
-    font-size: 15px;
+    font-size: 18px;
     border-radius: 10px;
     text-decoration: none;
     outline: 2px solid rgb(59, 59, 59);
@@ -341,70 +183,95 @@ body.inverted {
     transition: background-color 0.3s;
     border-style: none;
     transition: all 0.25s cubic-bezier(0.02, 0.01, 0.21, 1);
-    opacity: 1;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+} .socialbuttonscontainer {
+    cursor: none !important;
+    position: fixed;
+    bottom: 10px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: center;
+    flex-shrink: 0;
+    white-space: nowrap;
+    gap: 15px
 }
+
+/*animations*/
+.socialbuttons:hover, .mode-toggle:hover, .okBtn:hover, .status:hover, #hubinvertBtn:hover, #error:hover {
+    scale: 1.1
+} .socialbuttons:active, .mode-toggle:active, .status:active, #error:active {
+    scale: 0.95
+} .spotifybtn:hover {
+    scale: 1.4
+} .spotifybtn:active {
+    scale: 1.1;
+} .spotifyanim {
+    opacity: 0;
+    animation: spotifyfadein 5s .5s forwards;
+} #loader.animate-start {
+    animation: 
+        l1 1s infinite cubic-bezier(.33, .72, .66, .39),
+        fadein 500ms cubic-bezier(.33, .72, .66, .39) forwards;
+}
+
+/*the loading circle or thingy...*/
+#loader {
+    display: flex;
+    position: fixed;
+    width: 50px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 8px solid;
+    border-color: #ffffff #ffffff00;
+    bottom: 20px;
+    right: 20px;
+    opacity: 0;
+}
+
+/*cursor*/
+#cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: white;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease, width 0.15s ease, height 0.15s ease;
+    mix-blend-mode: difference;
+    box-shadow: #ffffff7c 0px 0px 5pc;
+} #cursor.cursor--hover {
+    transform: translate(-50%, -50%) scale(1.25);
+} 
+
+/*parallax effects*/
+.parallax-layer1, .parallax-layer2, .parallax-layer3, .parallax-layer4 {
+    transition: transform 0.2s ease-out;
+} #happy .inner, #sad .inner {
+    animation: ratio 2s ease-in-out infinite;
+}
+
+/*status*/
 .spotifybtn {
     background-color: #ffffff00;
     border-style: none;
     color: #ffffff;
     transition: all 0.25s cubic-bezier(0.02, 0.01, 0.21, 1);
-}
-
-.spotifybtn:active {
-    scale: 1.1;
-}
-
-.statusText {
+} .statusText {
     position: fixed;
     top: 125px;
     white-space: nowrap;
-}
-
-.statusTextspot {
+} .statusTextspot {
     position: fixed;
-    top: 20%;
+    top: 150px;
     white-space: nowrap;
-}
-
-@keyframes spotifyfadein {
-    0% {
-	    opacity: 0;
-	    filter: blur(24px);
-	    transform: translate3d(0, 42%, 0);
-    }
-    10% {
-        opacity: 1;
-        filter: blur(0px);
-        transform: translate3d(0, 0, 0);
-    }
-    90% {
-        opacity: 1;
-        filter: blur(0px);
-        transform: translate3d(0, 0, 0);
-    }
-    100% {
-        opacity: 0;
-        filter: blur(24px);
-        transform: translate3d(0, 42%, 0);
-    }
-}
-
-.spotifyanim {
-    opacity: 0;
-    animation: spotifyfadein 5s .5s forwards;
-}
-
-.status.first {
-    animation: fadein 500ms cubic-bezier(.33, .72, .66, .39) forwards;
-}
-
-.status.second {
-    animation: fadeout 500ms cubic-bezier(.33, .72, .66, .39) forwards;
-}
-
-#whatishedoing {
+} #whatishedoing {
     display: flex;
     position: fixed;
     top: 100px;

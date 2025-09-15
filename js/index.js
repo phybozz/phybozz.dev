@@ -1,12 +1,10 @@
 //variables
-
 const sbuttons = document.querySelectorAll('.socialbuttons');
 const layers = document.querySelectorAll('.parallax-layer1, .parallax-layer2');
 const happy = document.getElementById('happy');
 const welcome = document.getElementById('welcome');
 
 //custom cursor
-
 let mouseX = -10, mouseY = -10;
 let currentX = 0, currentY = 0;
 const speed = 0.1;
@@ -16,7 +14,6 @@ const mouseSpeedFactor = 0.1;
 function animate() {
     currentX += (mouseX - currentX) * speed;
     currentY += (mouseY - currentY) * speed;
-
     cursor.style.top = currentY + 'px';
     cursor.style.left = currentX + 'px';
 
@@ -31,8 +28,7 @@ function animate() {
 }); hoverTargets.forEach(el => {
     el.addEventListener('mouseenter', () => {
         cursor.classList.add('cursor--hover');
-    });
-    el.addEventListener('mouseleave', () => {
+    }); el.addEventListener('mouseleave', () => {
         cursor.classList.remove('cursor--hover');
     });
 }); window.addEventListener('mousemove', e => {
@@ -71,7 +67,6 @@ function animate() {
 });
 
 //theme loader and switch
-
 if (localStorage.getItem('hubtheme') === 'dark') {
     document.body.classList.add('inverted');
     document.getElementById("hubInvertBtn").textContent = '☀️';  
@@ -87,10 +82,6 @@ if (localStorage.getItem('hubtheme') === 'dark') {
         btn.textContent = '🌙';
     }
 
-    btn.classList.remove('animate');
-    void btn.offsetWidth;
-    btn.classList.add('animate');
-
     btn.disabled = true;
     setTimeout(() => {
         btn.disabled = false;
@@ -98,7 +89,6 @@ if (localStorage.getItem('hubtheme') === 'dark') {
 });
 
 //loading animation and tab opening (idk if this even works lol)
-
 sbuttons.forEach(button => {
     button.addEventListener('click', function(e) {
         e.preventDefault();
@@ -144,7 +134,6 @@ sbuttons.forEach(button => {
 }
 
 //fetching
-
 window.ondataload = () => { }
         fetch("https://api.lanyard.rest/v1/users/923151955654738011").then((a) => a.json().then((a) => {
             landyard = a.data
@@ -161,19 +150,15 @@ window.ondataload = () => { }
             }
 
             document.getElementsByClassName("statusText")[0].innerHTML = status
-            
-
             spotify = landyard['spotify']
             if (landyard['listening_to_spotify'] == true || landyard['listening_to_spotify'] == "true") {
                 document.getElementsByClassName("statusText")[0].innerHTML = "<button class='spotifybtn' onclick='currentlyPlaying()'><i class='fab fa-spotify'></i></button> " + status
-            }
-                        
+            }       
         }))
 function currentlyPlaying() {
     fetch("https://api.lanyard.rest/v1/users/923151955654738011").then((a) =>
         a.json().then((a) => {
             landyard = a.data;
-
             spotify = landyard['spotify'];
             music = "</i><i>" + landyard.spotify['song'] + " — " + landyard.spotify['artist'].replaceAll(";", ",");
             document.getElementsByClassName("statusTextspot")[0].classList.add("spotifyanim");
