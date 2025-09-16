@@ -1,67 +1,5 @@
-/*@ related stuff*/
+/*Font*/
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
-@keyframes ratio {
-    0% {transform: rotate(2deg)}
-    50% {transform:rotate(-2deg)}
-    100% {transform: rotate(2deg);}
-} @keyframes l1 {
-    0% {transform: rotate(0deg);}
-    100% {transform: rotate(360deg);}
-} @keyframes fadein {
-    0% { opacity: 0;}
-    100% { opacity: 1;}
-} @keyframes fadeout {
-    0% { opacity: 1; }
-    100% { opacity:0; }
-} @keyframes spotifyfadein {
-    0% {
-	    opacity: 0;
-	    filter: blur(24px);
-	    transform: translate3d(0, 42%, 0);
-    }
-    10% {
-        opacity: 1;
-        filter: blur(0px);
-        transform: translate3d(0, 0, 0);
-    }
-    90% {
-        opacity: 1;
-        filter: blur(0px);
-        transform: translate3d(0, 0, 0);
-    }
-    100% {
-        opacity: 0;
-        filter: blur(24px);
-        transform: translate3d(0, 42%, 0);
-    }
-} @media (max-width: 700px) {
-    .socialbuttonscontainer {
-        flex-wrap: nowrap;
-        justify-content: center;
-    }
-    #cursor {
-        display: block;
-    }
-    .socialbuttons {
-        padding: 10px;
-        font-size: 25px;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-    }
-
-    .socialbuttons .label {
-        display: none; 
-    }
-} @media (max-width: 850px) {
-    #loader {
-        top: 20px;
-        left: 20px;
-    }
-}
 
 /*idk what to call this but ok*/
 html, body, * {
@@ -275,4 +213,68 @@ html, body, * {
     display: flex;
     position: fixed;
     top: 100px;
+}
+
+/*keyframes and media stuff*/
+@keyframes ratio {
+    0% {transform: rotate(2deg)}
+    50% {transform:rotate(-2deg)}
+    100% {transform: rotate(2deg);}
+} @keyframes l1 {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+} @keyframes fadein {
+    0% { opacity: 0;}
+    100% { opacity: 1;}
+} @keyframes fadeout {
+    0% { opacity: 1; }
+    100% { opacity:0; }
+} @keyframes spotifyfadein {
+    0% {
+	    opacity: 0;
+	    filter: blur(24px);
+	    transform: translate3d(0, 42%, 0);
+    }
+    10% {
+        opacity: 1;
+        filter: blur(0px);
+        transform: translate3d(0, 0, 0);
+    }
+    90% {
+        opacity: 1;
+        filter: blur(0px);
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        opacity: 0;
+        filter: blur(24px);
+        transform: translate3d(0, 42%, 0);
+    }
+} @media (max-width: 850px) {
+    #loader {
+        top: 20px;
+        left: 20px;
+    }
+} @media (max-width: 700px) {
+    .socialbuttonscontainer {
+        flex-wrap: nowrap;
+        justify-content: center;
+    }
+    #cursor {
+        display: block;
+    }
+    .socialbuttons {
+        padding: 10px;
+        font-size: 25px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+
+    .socialbuttons .label {
+        display: none; 
+    }
 }
