@@ -3,13 +3,11 @@ export async function onRequest(context) {
 
   if (url.hostname.startsWith("www.")) {
     url.hostname = url.hostname.slice(4);
+    return Response.redirect(url.href, 301);
   }
 
   if (url.pathname.endsWith(".html")) {
     url.pathname = url.pathname.slice(0, -5);
-  }
-
-  if (url.href !== context.request.url) {
     return Response.redirect(url.href, 301);
   }
 
