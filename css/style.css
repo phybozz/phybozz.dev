@@ -55,7 +55,7 @@ body.inverted {
 #happy, #sad {
     font-family: "DM Sans", sans-serif;
     position: fixed;
-    bottom: 0;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: calc(var(--width) * 0.0925);

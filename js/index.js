@@ -60,8 +60,8 @@ function handleParallaxMovement(e) {
         layer.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
     });
 
-    const moveX = x * mouseSpeedFactor * 100;
-    const moveY = y * mouseSpeedFactor * 100;
+    const moveX = x * mouseSpeedFactor * 50;
+    const moveY = y * mouseSpeedFactor * 50;
 
     happy.style.transform = `translate(-50%, -50%) translate(${moveX}px, ${moveY}px)`;
     welcome.style.transform = `translate(-50%, -50%) translate(${moveX}px, ${moveY}px)`;
