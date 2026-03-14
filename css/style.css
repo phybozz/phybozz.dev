@@ -217,18 +217,22 @@ a:focus, button:focus, .socialbuttons:focus, .mode-toggle:focus, .okBtn:focus {
     height: 20px;
 } 
 
-#statusText {
+#statusWrapper {
     position: fixed;
     top: 125px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Abstand zwischen Texten */
+    align-items: center;
     max-width: 90%;
-    overflow-wrap: break-word;
     text-align: center;
-} 
+}
 
-#statusTextSpot {
-    position: fixed;
-    top: 150px;
-} 
+#statusText, #statusTextSpot {
+    position: static; /* wichtig: damit Flexbox funktioniert */
+}
 
 #whatishedoing {
     display: flex;
