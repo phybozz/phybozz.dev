@@ -224,7 +224,7 @@ a:focus, button:focus, .socialbuttons:focus, .mode-toggle:focus, .okBtn:focus {
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Abstand zwischen Texten */
+    gap: 0px; /* Abstand zwischen Texten */
     align-items: center;
     max-width: 90%;
     text-align: center;
@@ -296,7 +296,7 @@ a:focus, button:focus, .socialbuttons:focus, .mode-toggle:focus, .okBtn:focus {
         display: block;             
     }
     .socialbuttons {
-        height: calc(var(--width) * 0.0175);
+        height: calc(var(--height) * 0.03);
         width: calc(var(--width) * 0.015);
         justify-content: center;
         align-items: center;
