@@ -73,6 +73,7 @@ window.addEventListener('touchmove', (e) => {
     handleParallaxMovement(touch);
 });
 
+
 // Theme loader and switch
 const themeButton = document.getElementById("hubInvertBtn");
 const savedTheme = localStorage.getItem('hubtheme');
