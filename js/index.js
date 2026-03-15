@@ -15,40 +15,40 @@ const cursor = document.getElementById('cursor');
 const hoverTargets = document.querySelectorAll('a, button, .mode-toggle');
 const scontainer = document.querySelectorAll('.socialbuttonscontainer')
 
-// custom cursor
-let mouseX = -10, mouseY = -10;
-let currentX = 0, currentY = 0;
-const speed = 0.1;
 const mouseSpeedFactor = 0.1;
 
-// Cursor
-function animateCursor() {
-    currentX += (mouseX - currentX) * speed;
-    currentY += (mouseY - currentY) * speed;
-    cursor.style.top = `${currentY}px`;
-    cursor.style.left = `${currentX}px`;
-    requestAnimationFrame(animateCursor);
+const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+if (isTouchDevice) {
+    cursor.style.display = 'none';
+} else {
+    // Desktop: Cursor-Animation
+    let mouseX = -10, mouseY = -10;
+    let currentX = 0, currentY = 0;
+    const speed = 0.1;
+
+    function animateCursor() {
+        currentX += (mouseX - currentX) * speed;
+        currentY += (mouseY - currentY) * speed;
+        cursor.style.top = `${currentY}px`;
+        cursor.style.left = `${currentX}px`;
+        requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    // Mausbewegung
+    window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    // Hover-Effekte
+    const hoverTargets = document.querySelectorAll('a, button, .mode-toggle');
+    hoverTargets.forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('cursor--hover'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('cursor--hover'));
+    });
 }
-animateCursor();
-
-window.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-});
-
-
-window.addEventListener('touchmove', (e) => {
-    const touch = e.touches[0];
-    mouseX = touch.clientX;
-    mouseY = touch.clientY;
-    animateCursor(); 
-});
-
-// hover targets
-hoverTargets.forEach((el) => {
-    el.addEventListener('mouseenter', () => cursor.classList.add('cursor--hover'));
-    el.addEventListener('mouseleave', () => cursor.classList.remove('cursor--hover'));
-});
 
 // parallax effect
 function handleParallaxMovement(e) {

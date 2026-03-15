@@ -57,7 +57,7 @@ function handleParallaxMovement(e) {
     const moveY = y * mouseSpeedFactor * 25;
 
     sadwrap.style.transform = `translate(${moveX}px, ${moveY}px)`;
-    pageerror.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    pageerror.style.transform = `translateY(-50%) translate(${moveX}px, ${moveY}px)`;
 }
 
 window.addEventListener('mousemove', handleParallaxMovement);
