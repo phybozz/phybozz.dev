@@ -331,7 +331,7 @@ a:focus, button:focus, .socialbuttons:focus, .mode-toggle:focus, .okBtn:focus {
 		display: flex;
 		flex-wrap: nowrap;
 		justify-content: center;
-		gap: calc(var(--width) * .004);
+		gap: 2.5%
 	}
 
 	#cursor {
@@ -339,8 +339,7 @@ a:focus, button:focus, .socialbuttons:focus, .mode-toggle:focus, .okBtn:focus {
 	}
 
 	.socialbuttons {
-		height: 10%;
-        width: 10%;
+		height: clamp(50px, 15vw, 100px);;
         padding: 0px;
 		aspect-ratio: 1 / 1;
 		display: flex;
