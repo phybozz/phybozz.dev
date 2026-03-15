@@ -4,6 +4,7 @@
 	src: url('../font/JetBrainsMono-Regular.woff2') format('woff2');
 	font-weight: 400;
 	font-style: normal;
+	font-display: swap;
 }
 
 @font-face {
@@ -11,6 +12,7 @@
 	src: url('../font/DMSans-Variable.woff2') format('woff2');
 	font-weight: 400;
 	font-style: normal;
+	font-display: swap;
 }
 
 /*idk what to call this but ok*/
@@ -30,7 +32,7 @@ html, body {
 
 body {
 	background-color: #000;
-	font-family: "JetBrainsMonoNL Nerd Font";
+	font-family: "JetBrainsMonoNL Nerd Font", monospace;
 	color: #f0f8ff;
 	display: flex;
 	flex-direction: column;
