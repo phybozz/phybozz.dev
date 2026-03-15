@@ -63,7 +63,7 @@ function handleParallaxMovement(e) {
     const moveX = x * mouseSpeedFactor * 50;
     const moveY = y * mouseSpeedFactor * 50;
 
-    happy.style.transform = `translate(-50%, -50%) translate(${moveX}px, ${moveY}px)`;
+    happy.style.transform = `translate(-50%, -50%) translateY(50%) translate(${moveX}px, ${moveY}px)`;
     welcome.style.transform = `translate(-50%, -50%) translate(${moveX}px, ${moveY}px)`;
 }
 
