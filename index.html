@@ -14,31 +14,43 @@
     <meta name="description" content="This is the Hub for @phybozz's social media accounts!"/>
 </head>
 <body>
-    <div class="centercontainer">
-        <div class="center" id="happywrap">
-            <p id="happy">:D</p>
+    <main>
+        <div class="centercontainer">
+            <div class="center" id="happywrap">
+                <p id="happy">:D</p>
+            </div>
+            <p id="welcome"><u>Hello, This is my Hub for my social media accounts!</u></p>
         </div>
-        <p id="welcome"><u>Hello, This is my Hub for my social media accounts!</u></p>
-    </div>
-    <div class="socialbuttonscontainer">
-        <a href="https://www.youtube.com/@PhybozzX" class="socialbuttons"><img src="svg/youtube.svg" alt="">
-        <span class="label">YouTube</span></a>
-        <a href="https://discord.gg/DUuDsJTWQj" class="socialbuttons"><img src="svg/discord.svg" alt="">
-        <span class="label">Discord</span></a>
-        <a href="https://www.tiktok.com/@phybozz" class="socialbuttons"><img src="svg/tiktok.svg" alt="">
-        <span class="label">TikTok</span></a>
-        <a href="https://github.com/Phybozz" class="socialbuttons"><img src="svg/github.svg" alt="">
-        <span class="label">Github</span></a>
-        <a href="https://ko-fi.com/phybozz" class="socialbuttons"><img src="svg/wallet.svg" alt="">
-        <span class="label">Donate</span></a>
-    </div>
-    <div id="cursor"></div>
-    <button class="mode-toggle" id="hubInvertBtn">🌙</button>
-    <div id="statusWrapper">
-        <p id="whatishedoing"><u>What is Phybozz doing?</u></p>
-        <p id="statusText"></p>
-        <p id="statusTextSpot"></p>
-    </div>
+        <nav class="socialbuttonscontainer" aria-label="Social Media Links">
+            <a href="https://www.youtube.com/@PhybozzX" class="socialbuttons" aria-label="YouTube">
+                <img src="svg/youtube.svg" alt="">
+                <span class="label">YouTube</span>
+            </a>
+            <a href="https://discord.gg/DUuDsJTWQj" class="socialbuttons" aria-label="Discord">
+                <img src="svg/discord.svg" alt="">
+                <span class="label">Discord</span>
+            </a>
+            <a href="https://www.tiktok.com/@phybozz" class="socialbuttons" aria-label="TikTok">
+                <img src="svg/tiktok.svg" alt="">
+                <span class="label">TikTok</span>
+            </a>
+            <a href="https://github.com/Phybozz" class="socialbuttons" aria-label="GitHub">
+                <img src="svg/github.svg" alt="">
+                <span class="label">GitHub</span>
+            </a>
+            <a href="https://ko-fi.com/phybozz" class="socialbuttons" aria-label="Donate">
+                <img src="svg/wallet.svg" alt="">
+                <span class="label">Donate</span>
+            </a>
+        </nav>
+        <div id="cursor"></div>
+        <button class="mode-toggle" id="hubInvertBtn">🌙</button>
+        <section id="statusWrapper">
+            <p id="whatishedoing"><u>What is Phybozz doing?</u></p>
+            <p id="statusText"></p>
+            <p id="statusTextSpot"></p>
+        </section>
+    </main>
     <script src="js/index.js" defer></script>
 </body>
 </html>

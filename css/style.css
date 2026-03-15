@@ -149,8 +149,10 @@ body.inverted {
 /* socialbuttoncontainer */
 .socialbuttonscontainer {
 	position: fixed;
-	bottom: 10px;
-	transform: translateY(-50%);
+	bottom: 1%;
+    display: flex;
+	left: 50%;
+	transform: translate(-50%, -50%);
 	display: flex;
 	justify-content: center;
 	align-items: center;
