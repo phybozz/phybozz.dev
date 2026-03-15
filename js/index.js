@@ -1,10 +1,11 @@
+// var var var var var bradar
 const maxWidth = screen.width * window.devicePixelRatio;
 const maxHeight = screen.height * window.devicePixelRatio;
 
 document.documentElement.style.setProperty('--width', `${maxWidth}px`);
 document.documentElement.style.setProperty('--height', `${maxHeight}px`);
 
-// Variables
+// variables
 const sbuttons = document.querySelectorAll('.socialbuttons');
 const layers = document.querySelectorAll('.parallax-layer1, .parallax-layer2');
 const happy = document.getElementById('happy');
@@ -14,13 +15,13 @@ const cursor = document.getElementById('cursor');
 const hoverTargets = document.querySelectorAll('a, button, .mode-toggle');
 const scontainer = document.querySelectorAll('.socialbuttonscontainer')
 
-// Custom cursor
+// custom cursor
 let mouseX = -10, mouseY = -10;
 let currentX = 0, currentY = 0;
 const speed = 0.1;
 const mouseSpeedFactor = 0.1;
 
-// Cursor animation
+// Cursor
 function animateCursor() {
     currentX += (mouseX - currentX) * speed;
     currentY += (mouseY - currentY) * speed;
@@ -43,13 +44,13 @@ window.addEventListener('touchmove', (e) => {
     animateCursor(); 
 });
 
-// Hover targets
+// hover targets
 hoverTargets.forEach((el) => {
     el.addEventListener('mouseenter', () => cursor.classList.add('cursor--hover'));
     el.addEventListener('mouseleave', () => cursor.classList.remove('cursor--hover'));
 });
 
-// Parallax effect
+// parallax effect
 function handleParallaxMovement(e) {
     const x = (e.clientX / window.innerWidth - 0.5);
     const y = (e.clientY / window.innerHeight - 0.5);
@@ -68,7 +69,7 @@ window.addEventListener('touchmove', (e) => {
 });
 
 
-// Theme loader and switch
+// theme loader and switch
 const themeButton = document.getElementById("hubInvertBtn");
 const savedTheme = localStorage.getItem('hubtheme');
 if (savedTheme === 'dark') {
@@ -120,7 +121,11 @@ ws.addEventListener("message", (event) => {
         });
     }
 
-    if (status !== lastStatus || data2?.listening_to_spotify !== lanyard.listening_to_spotify) {
+    if (
+        status !== lastStatus ||
+        data2?.listening_to_spotify !== lanyard.listening_to_spotify ||
+        data2?.spotify?.track_id !== lanyard.spotify?.track_id
+    ) {
         lastStatus = status;
         data2 = lanyard;
         updateStatus(lanyard, status);
@@ -129,28 +134,23 @@ ws.addEventListener("message", (event) => {
 
 function updateStatus(lanyard, status) {
     const statusTextElement = document.getElementById("statusText");
-    statusTextElement.innerHTML = '';
-    statusTextElement.style.display = 'flex';
-    statusTextElement.style.alignItems = 'center';
-    statusTextElement.style.gap = '8px';
+    statusTextElement.innerHTML = ''; // clear old content
 
     if (lanyard.listening_to_spotify) {
         const spotifyButton = document.createElement('button');
         spotifyButton.classList.add('spotifybtn');
         spotifyButton.innerHTML = '<img src="svg/spotify.svg" alt="Spotify" />';
-        spotifyButton.style.cursor = 'pointer';
-        spotifyButton.style.background = 'none';
-        spotifyButton.style.border = 'none';
-        spotifyButton.style.padding = '0';
         spotifyButton.addEventListener('click', currentlyPlaying);
+
+        // Icon direkt am Anfang einfügen
         statusTextElement.appendChild(spotifyButton);
     }
 
+    // Rest des Status-Textes
     const statusSpan = document.createElement('span');
     statusSpan.textContent = status;
     statusTextElement.appendChild(statusSpan);
 }
-
 function currentlyPlaying() {
     if (!data2 || !data2.listening_to_spotify) return;
 

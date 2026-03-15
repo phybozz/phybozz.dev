@@ -1,3 +1,4 @@
+// var var var var var bradar
 const maxWidth = screen.width * window.devicePixelRatio;
 const maxHeight = screen.height * window.devicePixelRatio;
 
