@@ -10,10 +10,6 @@
 }
 
 /*idk what to call this but ok*/
-html, body, * {
-    cursor: none !important;
-    user-select: none !important;
-} 
 
 html, body {
     width: 100%;
@@ -30,6 +26,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    cursor: none !important;
+    user-select: none !important;
 } 
 
 body.inverted {
@@ -38,23 +36,24 @@ body.inverted {
 }
 
 #welcome, #pageerror {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    bottom: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     z-index: 10;
     font-size: clamp(15px, 3.75vw, 17.5px);
     text-align: center;
     max-width: 90%;
+    margin: 0px;
     overflow-wrap: break-word;
 }
 
+.centercontainer {
+    gap: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
 .center {
-    position: fixed;
-    inset: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -63,13 +62,13 @@ body.inverted {
 
 #happy, #sad {
     font-family: "DM Sans", sans-serif;
-    font-size: calc(var(--width) * 0.0925);
+    font-size: clamp(15rem, 35vw, 25rem);
     z-index: 10;
+    margin: 0px;
     animation: ratio 2s ease-in-out infinite;
     text-shadow: 0px 0px 500px rgba(255, 255, 255, 0.277);
     white-space: nowrap;
 }
-
 
 #returntxt {
     bottom: 60px;
