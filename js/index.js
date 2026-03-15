@@ -8,6 +8,7 @@ document.documentElement.style.setProperty('--height', `${maxHeight}px`);
 const sbuttons = document.querySelectorAll('.socialbuttons');
 const layers = document.querySelectorAll('.parallax-layer1, .parallax-layer2');
 const happy = document.getElementById('happy');
+const happywrap = document.getElementById('happywrap')
 const welcome = document.getElementById('welcome');
 const cursor = document.getElementById('cursor');
 const hoverTargets = document.querySelectorAll('a, button, .mode-toggle');
@@ -53,17 +54,10 @@ function handleParallaxMovement(e) {
     const x = (e.clientX / window.innerWidth - 0.5);
     const y = (e.clientY / window.innerHeight - 0.5);
 
-    layers.forEach((layer) => {
-        const speed = parseFloat(layer.getAttribute('data-speed'));
-        const moveX = x * speed * 5;
-        const moveY = y * speed * 5;
-        layer.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
-    });
+    const moveX = x * mouseSpeedFactor * 25;
+    const moveY = y * mouseSpeedFactor * 25;
 
-    const moveX = x * mouseSpeedFactor * 50;
-    const moveY = y * mouseSpeedFactor * 50;
-
-    happy.style.transform = `translate(-50%, -50%) translateY(50%) translate(${moveX}px, ${moveY}px)`;
+    happywrap.style.transform = `translate(${moveX}px, ${moveY}px)`;
     welcome.style.transform = `translate(-50%, -50%) translate(${moveX}px, ${moveY}px)`;
 }
 

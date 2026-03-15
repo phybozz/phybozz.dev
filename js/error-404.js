@@ -7,6 +7,7 @@ document.documentElement.style.setProperty('--height', `${maxHeight}px`);
 // Variables
 const layers = document.querySelectorAll('.parallax-layer3, .parallax-layer4');
 const sad = document.getElementById('sad');
+const sadwrap = document.getElementById('sadwrap');
 const pageerror = document.getElementById('pageerror');
 const cursor = document.getElementById('cursor');
 const hoverTargets = document.querySelectorAll('a, button, .mode-toggle');
@@ -51,17 +52,10 @@ function handleParallaxMovement(e) {
     const x = (e.clientX / window.innerWidth - 0.5);
     const y = (e.clientY / window.innerHeight - 0.5);
 
-    layers.forEach((layer) => {
-        const speed = parseFloat(layer.getAttribute('data-speed'));
-        const moveX = x * speed * 5;
-        const moveY = y * speed * 5;
-        layer.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
-    });
+    const moveX = x * mouseSpeedFactor * 25;
+    const moveY = y * mouseSpeedFactor * 25;
 
-    const moveX = x * mouseSpeedFactor * 100;
-    const moveY = y * mouseSpeedFactor * 100;
-
-    sad.style.transform = `translate(-50%, -50%) translate(${moveX}px, ${moveY}px)`;
+    sadwrap.style.transform = `translate(${moveX}px, ${moveY}px)`;
     pageerror.style.transform = `translate(-50%, -50%) translate(${moveX}px, ${moveY}px)`;
 }
 
@@ -70,7 +64,6 @@ window.addEventListener('touchmove', (e) => {
     const touch = e.touches[0];
     handleParallaxMovement(touch);
 });
-
 
 // Theme loader and switch
 const themeButton = document.getElementById("hubInvertBtn");

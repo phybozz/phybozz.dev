@@ -52,18 +52,24 @@ body.inverted {
     overflow-wrap: break-word;
 }
 
-#happy, #sad {
-    display: flex;
-    font-family: "DM Sans", sans-serif;
+.center {
     position: fixed;
-    transform: translateX(-50%);
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#happy, #sad {
+    font-family: "DM Sans", sans-serif;
     font-size: calc(var(--width) * 0.0925);
     z-index: 10;
+    animation: ratio 2s ease-in-out infinite;
     text-shadow: 0px 0px 500px rgba(255, 255, 255, 0.277);
     white-space: nowrap;
-    align-items: center;
-    justify-content: center;
 }
+
 
 #returntxt {
     bottom: 60px;
@@ -193,16 +199,6 @@ a:focus, button:focus, .socialbuttons:focus, .mode-toggle:focus, .okBtn:focus {
 #cursor.cursor--hover {
     transform: translate(-50%, -50%) scale(1.25);
 } 
-
-/*parallax effects*/
-.parallax-layer1, .parallax-layer2, .parallax-layer3, .parallax-layer4 {
-    transition: transform 0.2s ease-out;
-} 
-
-#happy .inner, #sad .inner {
-    display: inline-block;
-    animation: ratio 2s ease-in-out infinite;
-}
 
 /*status*/
 .spotifybtn {
