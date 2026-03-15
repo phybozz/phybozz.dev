@@ -125,6 +125,7 @@ body.inverted {
 .socialbuttons img {
 	width: calc(var(--width) * .01);
 	margin-right: calc(var(--width) * .0025);
+	aspect-ratio: 1 / 1;
 }
 
 .mode-toggle {
