@@ -22,7 +22,7 @@ const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 if (isTouchDevice) {
     cursor.style.display = 'none';
 } else {
-    // Desktop: Cursor-Animation
+    // cursor anim
     let mouseX = -10, mouseY = -10;
     let currentX = 0, currentY = 0;
     const speed = 0.1;
@@ -94,6 +94,8 @@ themeButton.addEventListener('click', () => {
     }, 250);
 });
 
+
+// discord fetch
 let data2 = null;
 let lastStatus = "";
 
@@ -142,11 +144,9 @@ function updateStatus(lanyard, status) {
         spotifyButton.innerHTML = '<img src="svg/spotify.svg" alt="Spotify" />';
         spotifyButton.addEventListener('click', currentlyPlaying);
 
-        // Icon direkt am Anfang einfügen
         statusTextElement.appendChild(spotifyButton);
     }
 
-    // Rest des Status-Textes
     const statusSpan = document.createElement('span');
     statusSpan.textContent = status;
     statusTextElement.appendChild(statusSpan);
