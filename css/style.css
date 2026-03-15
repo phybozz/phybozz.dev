@@ -41,7 +41,8 @@ body.inverted {
 
 #welcome, #pageerror {
 	z-index: 10;
-	font-size: clamp(15px, 3.75vw, 17.5px);
+    font-size: clamp(15px, calc(3vw + 1.5vh), 18px);
+    transform: translateY(-50%);
 	text-align: center;
 	max-width: 90%;
 	margin: 0;
@@ -65,7 +66,7 @@ body.inverted {
 
 #happy, #sad {
 	font-family: "DM Sans", sans-serif;
-	font-size: clamp(10rem, 60vw, 20rem);
+    font-size: clamp(5rem, calc(10vw + 20vh),25rem);
 	z-index: 10;
 	margin: 0;
 	animation: ratio 2s ease-in-out infinite;
@@ -227,7 +228,7 @@ a:focus, button:focus, .socialbuttons:focus, .mode-toggle:focus, .okBtn:focus {
 
 #statusWrapper {
 	position: fixed;
-	top: 13%;
+	top: 10%;
 	left: 50%;
 	transform: translateX(-50%);
 	display: flex;
@@ -238,14 +239,19 @@ a:focus, button:focus, .socialbuttons:focus, .mode-toggle:focus, .okBtn:focus {
 }
 
 #statusText, #statusTextSpot {
+    transform: translateY(-125%);
+}
+
+#statusText, #statusTextSpot, #whatishedoing {
 	position: static;
     display: inline;
+    font-size: clamp(15px, calc(3vw + 1.5vh), 18px);
 }
 
 #whatishedoing {
-	display: flex;
-	position: fixed;
-	top: 10%;
+	display: inline;
+    white-space: nowrap;
+
 }
 
 /*keyframes and media stuff*/
@@ -320,7 +326,7 @@ a:focus, button:focus, .socialbuttons:focus, .mode-toggle:focus, .okBtn:focus {
 }
 
 
-@media (orientation: portrait) {
+@media (orientation: portrait), (max-width: 1000px) {
 	.socialbuttonscontainer {
 		display: flex;
 		flex-wrap: nowrap;

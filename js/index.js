@@ -59,7 +59,7 @@ function handleParallaxMovement(e) {
     const moveY = y * mouseSpeedFactor * 25;
 
     happywrap.style.transform = `translate(${moveX}px, ${moveY}px)`;
-    welcome.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    welcome.style.transform = `translateY(-50%) translate(${moveX}px, ${moveY}px)`;
 }
 
 window.addEventListener('mousemove', handleParallaxMovement);
