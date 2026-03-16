@@ -62,11 +62,14 @@ function handleParallaxMovement(e) {
     welcome.style.transform = `translateY(-50%) translate(${moveX}px, ${moveY}px)`;
 }
 
-window.addEventListener('mousemove', handleParallaxMovement);
-window.addEventListener('touchmove', (e) => {
-    const touch = e.touches[0];
-    handleParallaxMovement(touch);
+window.addEventListener('load', () => {
+    window.addEventListener('mousemove', handleParallaxMovement);
+    window.addEventListener('touchmove', (e) => {
+        const touch = e.touches[0];
+        handleParallaxMovement(touch);
+    });
 });
+
 
 
 // theme loader and switch
