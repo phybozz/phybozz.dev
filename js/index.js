@@ -55,8 +55,8 @@ function handleParallaxMovement(e) {
     const x = (e.clientX / window.innerWidth - 0.5);
     const y = (e.clientY / window.innerHeight - 0.5);
 
-    const moveX = x * mouseSpeedFactor * 25;
-    const moveY = y * mouseSpeedFactor * 25;
+    const moveX = x * mouseSpeedFactor * 50;
+    const moveY = y * mouseSpeedFactor * 50;
 
     happywrap.style.transform = `translate(${moveX}px, ${moveY}px)`;
     welcome.style.transform = `translateY(-50%) translate(${moveX}px, ${moveY}px)`;
