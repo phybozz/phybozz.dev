@@ -23,30 +23,32 @@ if (isTouchDevice) {
     cursor.style.display = 'none';
 } else {
     // cursor anim
-    let mouseX = -10, mouseY = -10;
+    let mouseX = -50, mouseY = -50;
     let currentX = 0, currentY = 0;
     const speed = 0.1;
 
     function animateCursor() {
         currentX += (mouseX - currentX) * speed;
         currentY += (mouseY - currentY) * speed;
-        cursor.style.top = `${currentY}px`;
-        cursor.style.left = `${currentX}px`;
+        cursor.style.transform = `translate(${currentX}px, ${currentY}px) translate(-50%, -50%)`
         requestAnimationFrame(animateCursor);
     }
     animateCursor();
 
-    // Mausbewegung
     window.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
     });
 
-    // Hover-Effekte
-    const hoverTargets = document.querySelectorAll('a, button, .mode-toggle');
     hoverTargets.forEach(el => {
-        el.addEventListener('mouseenter', () => cursor.classList.add('cursor--hover'));
-        el.addEventListener('mouseleave', () => cursor.classList.remove('cursor--hover'));
+        el.addEventListener('mouseenter', () => {
+            cursor.style.width = `37.5px`
+            cursor.style.height = `37.5px` 
+        });
+        el.addEventListener('mouseleave', () => {
+            cursor.style.width = `30px`
+            cursor.style.height = `30px`
+        });
     });
 }
 

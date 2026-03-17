@@ -13,58 +13,63 @@ const pageerror = document.getElementById('pageerror');
 const cursor = document.getElementById('cursor');
 const hoverTargets = document.querySelectorAll('a, button, .mode-toggle');
 
-// cursor
-let mouseX = -10, mouseY = -10;
-let currentX = 0, currentY = 0;
-const speed = 0.1;
 const mouseSpeedFactor = 0.1;
 
-// cursor anim
-function animateCursor() {
-    currentX += (mouseX - currentX) * speed;
-    currentY += (mouseY - currentY) * speed;
-    cursor.style.top = `${currentY}px`;
-    cursor.style.left = `${currentX}px`;
-    requestAnimationFrame(animateCursor);
+const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+if (isTouchDevice) {
+    cursor.style.display = 'none';
+} else {
+    // cursor anim
+    let mouseX = -50, mouseY = -50;
+    let currentX = 0, currentY = 0;
+    const speed = 0.1;
+
+    function animateCursor() {
+        currentX += (mouseX - currentX) * speed;
+        currentY += (mouseY - currentY) * speed;
+        cursor.style.transform = `translate(${currentX}px, ${currentY}px) translate(-50%, -50%)`
+        requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    hoverTargets.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursor.style.width = `37.5px`
+            cursor.style.height = `37.5px` 
+        });
+        el.addEventListener('mouseleave', () => {
+            cursor.style.width = `30px`
+            cursor.style.height = `30px`
+        });
+    });
 }
-animateCursor();
 
-window.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-});
-
-
-window.addEventListener('touchmove', (e) => {
-    const touch = e.touches[0];
-    mouseX = touch.clientX;
-    mouseY = touch.clientY;
-    animateCursor(); 
-});
-
-// hover
-hoverTargets.forEach((el) => {
-    el.addEventListener('mouseenter', () => cursor.classList.add('cursor--hover'));
-    el.addEventListener('mouseleave', () => cursor.classList.remove('cursor--hover'));
-});
-
-// parallax
+// parallax effect
 function handleParallaxMovement(e) {
     const x = (e.clientX / window.innerWidth - 0.5);
     const y = (e.clientY / window.innerHeight - 0.5);
 
-    const moveX = x * mouseSpeedFactor * 25;
-    const moveY = y * mouseSpeedFactor * 25;
+    const moveX = x * mouseSpeedFactor * 50;
+    const moveY = y * mouseSpeedFactor * 50;
 
-    sadwrap.style.transform = `translate(${moveX}px, ${moveY}px)`;
-    pageerror.style.transform = `translateY(-50%) translate(${moveX}px, ${moveY}px)`;
+    happywrap.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    welcome.style.transform = `translateY(-50%) translate(${moveX}px, ${moveY}px)`;
 }
 
-window.addEventListener('mousemove', handleParallaxMovement);
-window.addEventListener('touchmove', (e) => {
-    const touch = e.touches[0];
-    handleParallaxMovement(touch);
+window.addEventListener('load', () => {
+    window.addEventListener('mousemove', handleParallaxMovement);
+    window.addEventListener('touchmove', (e) => {
+        const touch = e.touches[0];
+        handleParallaxMovement(touch);
+    });
 });
+
 
 // theme loader switcher
 const themeButton = document.getElementById("hubInvertBtn");

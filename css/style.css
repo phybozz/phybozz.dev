@@ -209,13 +209,9 @@ a:focus, button:focus, .socialbuttons:focus, .mode-toggle:focus, .okBtn:focus {
 	pointer-events: none;
 	z-index: 9999;
 	transform: translate(-50%, -50%);
-	transition: transform .15s ease, width .15s ease, height .15s ease;
+	transition: width .15s ease, height .15s ease;
 	mix-blend-mode: difference;
 	box-shadow: #ffffff7c 0 0 5pc;
-}
-
-#cursor.cursor--hover {
-	transform: translate(-50%, -50%) scale(1.25);
 }
 
 /*status*/
