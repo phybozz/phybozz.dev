@@ -15,25 +15,34 @@ const cursor = document.getElementById('cursor');
 const hoverTargets = document.querySelectorAll('a, button, .mode-toggle');
 const scontainer = document.querySelectorAll('.socialbuttonscontainer')
 
+//cursor (mostly vibecoded btw)
 const mouseSpeedFactor = 0.1;
-
 const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-
 if (isTouchDevice) {
     cursor.style.display = 'none';
 } else {
-    // cursor anim
     let mouseX = -50, mouseY = -50;
     let currentX = 0, currentY = 0;
-    const speed = 0.1;
 
-    function animateCursor() {
-        currentX += (mouseX - currentX) * speed;
-        currentY += (mouseY - currentY) * speed;
-        cursor.style.transform = `translate(${currentX}px, ${currentY}px) translate(-50%, -50%)`
+    const speed = 0.3;
+
+    let lastTime = performance.now();
+
+    function animateCursor(now) {
+        const deltaTime = (now - lastTime) / 1000; 
+        lastTime = now;
+
+        const factor = 1 - Math.pow(1 - speed, deltaTime * 60);
+
+        currentX += (mouseX - currentX) * factor;
+        currentY += (mouseY - currentY) * factor;
+
+        cursor.style.transform = `translate(${currentX}px, ${currentY}px) translate(-50%, -50%)`;
+
         requestAnimationFrame(animateCursor);
     }
-    animateCursor();
+
+    requestAnimationFrame(animateCursor);
 
     window.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
@@ -42,12 +51,12 @@ if (isTouchDevice) {
 
     hoverTargets.forEach(el => {
         el.addEventListener('mouseenter', () => {
-            cursor.style.width = `37.5px`
-            cursor.style.height = `37.5px` 
+            cursor.style.width = `37.5px`;
+            cursor.style.height = `37.5px`;
         });
         el.addEventListener('mouseleave', () => {
-            cursor.style.width = `30px`
-            cursor.style.height = `30px`
+            cursor.style.width = `30px`;
+            cursor.style.height = `30px`;
         });
     });
 }
