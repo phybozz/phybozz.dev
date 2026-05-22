@@ -59,18 +59,6 @@ if (isTouchDevice) {
     });
 }
 
-// parallax effect
-function handleParallaxMovement(e) {
-    const x = (e.clientX / window.innerWidth - 0.5);
-    const y = (e.clientY / window.innerHeight - 0.5);
-
-    const moveX = x * mouseSpeedFactor * 50;
-    const moveY = y * mouseSpeedFactor * 50;
-
-    happywrap.style.transform = `translate(${moveX}px, ${moveY}px)`;
-    welcome.style.transform = `translateY(-50%) translate(${moveX}px, ${moveY}px)`;
-}
-
 window.addEventListener('load', () => {
     window.addEventListener('mousemove', handleParallaxMovement);
     window.addEventListener('touchmove', (e) => {
@@ -87,8 +75,8 @@ function handleParallaxMovement(e) {
     const moveX = x * mouseSpeedFactor * 50;
     const moveY = y * mouseSpeedFactor * 50;
 
-    happywrap.style.transform = `translate(${moveX}px, ${moveY}px)`;
-    welcome.style.transform = `translateY(-50%) translate(${moveX}px, ${moveY}px)`;
+    sadwrap.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    pageerror.style.transform = `translateY(-50%) translate(${moveX}px, ${moveY}px)`;
 }
 
 window.addEventListener('load', () => {

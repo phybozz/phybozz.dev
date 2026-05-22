@@ -19,6 +19,9 @@
 User-agent: *
 Allow: /
 
+User-agent: *
+Disallow: /404.html
+
 User-agent: GPTBot
 Disallow: /
 

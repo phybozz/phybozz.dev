@@ -1,0 +1,178 @@
+/*Font*/
+@font-face {
+	font-family: 'JetBrainsMonoNL Nerd Font';
+	src: url('../font/JetBrainsMono-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: optional;
+}
+
+@font-face {
+	font-family: 'DM Sans';
+	src: url('../font/DMSans-Variable.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: optional;
+}
+
+/*idk what to call this but ok*/
+* {
+	cursor: none !important;
+    user-select: none !important;
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+body {
+	background-color: #000;
+	font-family: "JetBrainsMonoNL Nerd Font", monospace;
+	color: #f0f8ff;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	line-height: 1;
+}
+
+body.inverted {
+	filter: invert(1) hue-rotate(180deg);
+	background-color: #fff !important;
+}
+
+#pageerror {
+	z-index: 10;
+    font-size: clamp(15px, calc(3vw + 1.5vh), 18px);
+    transform: translateY(-50%);
+	text-align: center;
+	max-width: 90%;
+	margin: 0;
+	overflow-wrap: break-word;
+}
+
+.centercontainer {
+	gap: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#sadwrap {
+	position: relative;
+}
+
+#sad {
+	font-family: "DM Sans", sans-serif;
+    font-size: clamp(5rem, calc(10vw + 20vh),25rem);
+	z-index: 10;
+	margin: 0;
+	animation: ratio 2s ease-in-out infinite;
+	text-shadow: 0 0 500px rgba(255, 255, 255, .277);
+	white-space: nowrap;
+}
+
+#returntxt {
+	bottom: 10%;
+	left: 50%;
+	position: fixed;
+	white-space: nowrap;
+	transform: translate(-50%, 50%);
+	z-index: 2;
+	font-size: clamp(15px, 3.75vw, 17.5px);
+}
+
+/*buttons*/
+#okBtn {
+	bottom: 7%;
+	left: 50%;
+	position: fixed;
+	display: inline-block;
+	background-color: rgb(28, 28, 28);
+	color: #fff;
+	transform: translate(-50%, 50%);
+	padding: 10px 70px;
+	font-size: 18px;
+	text-decoration: none;
+	outline: 0px solid rgb(59, 59, 59);
+	border: 2px solid rgb(59, 59, 59);
+	border-bottom-width: 4px;
+	transition: all .25s cubic-bezier(.02, .01, .21, 1);
+}
+
+.mode-toggle {
+	display: flex;
+	position: fixed;
+	transform: translate(-50%, 50%);
+	top: 0px;
+	right: 0px;
+	background-color: rgb(28, 28, 28);
+	color: #fff;
+	width: 45px;
+	height: 45px;
+	font-size: 18px;
+    border-style: none;
+	text-decoration: none;
+	border: 2px solid rgb(59, 59, 59);
+	cursor: none;
+	user-select: none;
+	outline: 0px solid rgb(59, 59, 59);
+	transition: all .25s cubic-bezier(.02, .01, .21, 1);
+	justify-content: center;
+	align-items: center;
+}
+
+.mode-toggle:hover, #okBtn:hover {
+	outline: 4px solid rgb(218, 218, 218);
+}
+
+.mode-toggle:focus, #okBtn:focus {
+	outline: 4px solid rgb(218, 218, 218);
+}
+
+.mode-toggle:active, #okBtn:active {
+	transform: translate(-50%, 50%) scale(.95);
+}
+
+/*cursor*/
+#cursor {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background-color: #fff;
+	pointer-events: none;
+	z-index: 9999;
+	transform: translate(-50%, -50%);
+	transition: width .15s ease, height .15s ease;
+	mix-blend-mode: difference;
+	box-shadow: #ffffff7c 0 0 5pc;
+}
+
+/*keyframes and media stuff*/
+@keyframes ratio {
+	0% {
+		transform: rotate(2deg);
+	}
+
+	50% {
+		transform: rotate(-2deg);
+	}
+
+	100% {
+		transform: rotate(2deg);
+	}
+}

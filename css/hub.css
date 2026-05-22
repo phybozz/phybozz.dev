@@ -27,7 +27,6 @@ html, body {
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
-    user-select: none !important;
 }
 
 body {
@@ -37,7 +36,6 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	cursor: none !important;
 	line-height: 1;
 }
 
@@ -46,7 +44,7 @@ body.inverted {
 	background-color: #fff !important;
 }
 
-#welcome, #pageerror {
+#welcome {
 	z-index: 10;
     font-size: clamp(15px, calc(3vw + 1.5vh), 18px);
     transform: translateY(-50%);
@@ -71,11 +69,11 @@ body.inverted {
 	align-items: center;
 }
 
-#welcome, #happywrap, #returntxt, #sadwrap {
+#welcome, #happywrap {
 	position: relative;
 }
 
-#happy, #sad {
+#happy {
 	font-family: "DM Sans", sans-serif;
     font-size: clamp(5rem, calc(10vw + 20vh),25rem);
 	z-index: 10;
@@ -94,30 +92,15 @@ body.inverted {
 	font-size: clamp(15px, 3.75vw, 17.5px);
 }
 
-/*buttons*/
-.okBtn, #invertBtn {
-	bottom: 30px;
-	position: fixed;
-	display: inline-block;
-	background-color: rgb(28, 28, 28);
-	color: #fff;
-	padding: 5px 70px;
-	font-size: 18px;
-	text-decoration: none;
-	outline: 2px solid rgb(59, 59, 59);
-	cursor: none;
-	user-select: none;
-	transition: all .25s cubic-bezier(.02, .01, .21, 1);
-	border-style: none;
-}
-
 .socialbuttons {
 	background-color: rgb(28, 28, 28);
 	color: #fff;
 	padding: calc(var(--width) * .004) calc(var(--height) * .01);
-	font-size: 18px;
+	font-size: calc(var(--width) * .007);
 	text-decoration: none;
-	outline: 2px solid rgb(59, 59, 59);
+	outline: 0px solid rgb(59, 59, 59);;
+	border: 2px solid rgb(59, 59, 59);
+	border-bottom-width: 4px;
 	cursor: none;
 	user-select: none;
 	transition: all .25s cubic-bezier(.02, .01, .21, 1);
@@ -145,7 +128,8 @@ body.inverted {
 	font-size: 18px;
     border-style: none;
 	text-decoration: none;
-	outline: 2px solid rgb(59, 59, 59);
+	outline: 0px solid rgb(59, 59, 59);
+	border: 2px solid rgb(59, 59, 59);
 	cursor: none;
 	user-select: none;
 	transition: all .25s cubic-bezier(.02, .01, .21, 1);
@@ -166,15 +150,15 @@ body.inverted {
 	gap: clamp(8px, calc(var(--width) * .005), 24px);
 }
 
-.a:hover, button:hover, .socialbuttons:hover, .mode-toggle:hover, .okBtn:hover {
+a:hover, button:hover, .socialbuttons:hover {
 	outline: 4px solid rgb(218, 218, 218);
 }
 
-a:focus, button:focus, .socialbuttons:focus, .mode-toggle:focus, .okBtn:focus {
+a:focus, button:focus, .socialbuttons:focus {
 	outline: 4px solid rgb(218, 218, 218);
 }
 
-.socialbuttons:active, .mode-toggle:active, .status:active, #error:active {
+.socialbuttons:active, .mode-toggle:active {
 	scale: .95;
 }
 
@@ -249,20 +233,25 @@ a:focus, button:focus, .socialbuttons:focus, .mode-toggle:focus, .okBtn:focus {
 	text-align: center;
 }
 
-#statusText, #statusTextSpot {
-    transform: translateY(-125%);
-}
-
 #statusText, #statusTextSpot, #whatishedoing {
 	position: static;
     display: inline;
     font-size: clamp(15px, calc(3vw + 1.5vh), 18px);
 }
 
+#statusText {
+    transform: translateY(-125%);
+}
+
+#statusTextSpot {
+	position: fixed;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
 #whatishedoing {
 	display: inline;
     white-space: nowrap;
-
 }
 
 /*keyframes and media stuff*/
@@ -277,36 +266,6 @@ a:focus, button:focus, .socialbuttons:focus, .mode-toggle:focus, .okBtn:focus {
 
 	100% {
 		transform: rotate(2deg);
-	}
-}
-
-@keyframes l1 {
-	0% {
-		transform: rotate(0);
-	}
-
-	100% {
-		transform: rotate(360deg);
-	}
-}
-
-@keyframes fadein {
-	0% {
-		opacity: 0;
-	}
-
-	100% {
-		opacity: 1;
-	}
-}
-
-@keyframes fadeout {
-	0% {
-		opacity: 1;
-	}
-
-	100% {
-		opacity: 0;
 	}
 }
 
@@ -343,10 +302,6 @@ a:focus, button:focus, .socialbuttons:focus, .mode-toggle:focus, .okBtn:focus {
 		flex-wrap: nowrap;
 		justify-content: center;
 		gap: 2.5%
-	}
-
-	#cursor {
-		display: block;
 	}
 
 	.socialbuttons {
